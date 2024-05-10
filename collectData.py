@@ -5,17 +5,16 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
-# Not sure I want Data to be a class... only need one instance
 class Data :
     def __init__(self) :
         # Indexed by team; holds indices to players
         self.teamData = {}
-        self.schedule = {}
+        self.schedule = []
     
 
 
     def private_makeSoupFrom(self, url) :
-         # Access baseball-reference.com
+         # Launch chrome driver
         service = Service('/Users/russellrozenbaum/Downloads/chromedriver-mac-arm64/chromedriver')
         driver = webdriver.Chrome(service=service)
         driver.get(url)
@@ -23,7 +22,8 @@ class Data :
         html = driver.page_source
 
         # We collect/scrape data from given url
-        soup = BeautifulSoup(html, 'html.parser') 
+        soup = BeautifulSoup(html, 'html.parser')
+        driver.quit()
         return soup
     
 
@@ -68,8 +68,6 @@ class Data :
 
     def printBatterDataToCSV(self) :
         c = ','
-        i = 0
-
         # We write scraped data to playerData.csv file
         orig_out = sys.stdout
         fout = open('playerData.csv', 'w')
@@ -88,6 +86,34 @@ class Data :
 
 
     def collectScheduleData(self) :
-        None
+        url = 'https://baseballsavant.mlb.com/probable-pitchers'
+        soup = self.private_makeSoupFrom(url)
+        matchup_blocks = soup.find_all('div', class_='game-info')
+
+        matchups = []
+        for m in matchup_blocks :
+            matchups.append(m.find('h2').text.strip())
+
+        for game in matchups :
+            teams = game.split(' @ ')
+            self.schedule.append({'away': teams[0], 'home': teams[1]})
+
+        
+
+    def printScheduleToCSV(self) :
+        c = ','
+        # We write scraped data to playerData.csv file
+        orig_out = sys.stdout
+        fout = open('schedule.csv', 'w')
+        sys.stdout = fout
+
+        print('awayTeam,homeTeam')
+        for game in self.schedule :
+            print(game['away'], c, game['home'], sep='')
+
+        # Close altered stdout
+        sys.stdout = orig_out
+        fout.close()
+
 
 
