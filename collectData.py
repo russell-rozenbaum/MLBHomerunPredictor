@@ -86,7 +86,7 @@ class Data :
 
         for i in range(len(player_name)) :
             team = player_team[i].text.strip()
-            name = player_name[i].text.strip().replace('*','')
+            name = player_name[i].text.strip().replace('*','').replace('#','')
             player_info = {
             'gp' : int(player_gp[i].text.strip()),
             'pa' : int(player_pa[i].text.strip()),
