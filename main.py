@@ -21,6 +21,7 @@ lineup_data_thread.join()
 player_data_thread.join()
 
 data.printStartingLineupsToCSV()
+data.printStartingPitchersToCSV()
 data.printBatterDataToCSV()
 data.printScheduleToCSV()
 

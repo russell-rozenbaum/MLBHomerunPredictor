@@ -133,7 +133,9 @@ class Data :
         url = 'https://www.rotowire.com/baseball/daily-lineups.php'
         soup = self.private_makeSoupFrom(url)   
         # This line actually fails to grab a lineup if the game has started
-        boxes = soup.find_all('div', class_='lineup is-mlb has-started')
+        boxes_unstarted_games = soup.find_all('div', class_='lineup is-mlb')
+        boxes_started_games = soup.find_all('div', class_='lineup is-mlb has-started')
+        boxes = boxes_unstarted_games + boxes_started_games
         for box in boxes :
             away_team = box.find('div', class_='lineup__team is-visit')
             away_team = away_team.find('div', class_='lineup__abbr').text.strip()         
@@ -152,7 +154,7 @@ class Data :
 
     def printBatterDataToCSV(self) :
         c = ','
-        # We write scraped data to playerData.csv file
+        # We write scraped data to batterData.csv file
         orig_out = sys.stdout
         fout = open('batterData.csv', 'w')
         sys.stdout = fout
@@ -170,7 +172,6 @@ class Data :
         
     def printScheduleToCSV(self) :
         c = ','
-        # We write scraped data to playerData.csv file
         orig_out = sys.stdout
         fout = open('schedule.csv', 'w')
         sys.stdout = fout
@@ -186,7 +187,6 @@ class Data :
 
     def printStartingLineupsToCSV(self) :
         c = ','
-        # We write scraped data to playerData.csv file
         orig_out = sys.stdout
         fout = open('startingLineups.csv', 'w')
         sys.stdout = fout
@@ -202,6 +202,20 @@ class Data :
                 for player in team['startingLineup'] :
                     print(c, player, sep='', end='')
             print('')
+        # Close altered stdout
+        sys.stdout = orig_out
+        fout.close()
+        
+
+    def printStartingPitchersToCSV(self) :
+        c = ','
+        orig_out = sys.stdout
+        fout = open('startingPitchers.csv', 'w')
+        sys.stdout = fout
+
+        print('team,startingPitcher')
+        for team_name, team in self.teamData.items():
+            print(team_name, c, team['startingPitcher'], sep='')
         # Close altered stdout
         sys.stdout = orig_out
         fout.close()
