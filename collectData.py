@@ -174,13 +174,13 @@ class Data :
 
         print('team,1st,2nd,3rd,4th,5th,6th,7th,8th,9th')
         for team_name, team in self.teamData.items():
-            print(team_name, c, sep='', end='')
+            print(team_name, sep='', end='')
             if len(team['startingLineup']) < lineupSize :
                 for i in range(lineupSize) :
-                    print('', c, sep='', end='')
+                    print(c, '', sep='', end='')
             else :
                 for player in team['startingLineup'] :
-                    print(player, c, sep='', end='')
+                    print(c, player, sep='', end='')
             print('')
         # Close altered stdout
         sys.stdout = orig_out
