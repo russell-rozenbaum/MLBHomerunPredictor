@@ -4,6 +4,7 @@ import selenium
 from bs4 import BeautifulSoup 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+import threading
 
 
 class Data :
@@ -62,7 +63,7 @@ class Data :
             return first[0] + '. ' + last
         
 
-    def collectTeamData(self) :
+    def collectBatterData(self) :
 
         url = 'https://www.baseball-reference.com/leagues/majors/2024-standard-batting.shtml'
         soup = self.private_makeSoupFrom(url)
@@ -98,14 +99,14 @@ class Data :
                 if team not in self.teamData :
                     self.teamData[team] = {'batterData': {}, 'pitcherData': {}, 'pitcher': str, 'startingLineup': []}
                 self.teamData[team]['batterData'][self.private_parse_name(name)] = player_info
-        self.collectStartingLineups()
+        #self.collectStartingLineups()
 
 
     def collectScheduleData(self) :
         url = 'https://baseballsavant.mlb.com/probable-pitchers'
         soup = self.private_makeSoupFrom(url)
         matchup_blocks = soup.find_all('div', class_='game-info')
-
+        
         matchups = []
         for m in matchup_blocks :
             matchups.append(m.find('h2').text.strip())
@@ -115,41 +116,45 @@ class Data :
             self.schedule.append({'away': teams[0], 'home': teams[1]})
         
 
+    def private_collectLineup(self, team, lineup) :
+        team = self.private_map(team)
+        pitcher = lineup.find('div', class_='lineup__player-highlight-name').find('a').text.strip()
+        # This along with threading collectLineup and collectPlayerData 
+        # might create a race condition... we'll see
+        if team not in self.teamData :
+            self.teamData[team] = {'batterData': {}, 'pitcherData': {}, 'pitcher': str, 'startingLineup': []}
+        self.teamData[team]['startingPitcher'] = self.private_parse_name(pitcher)
+        lineup = lineup.find_all('li', class_='lineup__player')
+        for chunk in lineup :
+            lineup_player = chunk.find('a').text.strip().replace('*','').replace('#','')
+            self.teamData[team]['startingLineup'].append(self.private_parse_name(lineup_player))
 
     def collectStartingLineups(self) :
         url = 'https://www.rotowire.com/baseball/daily-lineups.php'
         soup = self.private_makeSoupFrom(url)   
-
         # This line actually fails to grab a lineup if the game has started
-        boxes = soup.find_all('div', class_='lineup is-mlb')
+        boxes = soup.find_all('div', class_='lineup is-mlb has-started')
         for box in boxes :
             away_team = box.find('div', class_='lineup__team is-visit')
             away_team = away_team.find('div', class_='lineup__abbr').text.strip()         
             home_team = box.find('div', class_='lineup__team is-home')  
             home_team = home_team.find('div', class_='lineup__abbr').text.strip() 
-            # This just matches abbreviations where the 2 websites differ
-            away_team = self.private_map(away_team)
-            home_team = self.private_map(home_team)
-
-            away_lineup = box.find('ul', class_='lineup__list is-visit')
-            away_lineup = away_lineup.find_all('li', class_='lineup__player')
-            for chunk in away_lineup :
-                away_lineup_player = chunk.find('a').text.strip().replace('*','').replace('#','')
-                self.teamData[away_team]['startingLineup'].append(self.private_parse_name(away_lineup_player))
-            home_lineup = box.find('ul', class_='lineup__list is-home')
-            home_lineup = home_lineup.find_all('li', class_='lineup__player')
-            for chunk in home_lineup :
-                home_lineup_player = chunk.find('a').text.strip().replace('*','').replace('#','')
-                self.teamData[home_team]['startingLineup'].append(self.private_parse_name(home_lineup_player))
-                
+            # Define the threads
+            away_thread = threading.Thread(target=self.private_collectLineup, args=(away_team, box.find('ul', class_='lineup__list is-visit')))
+            home_thread = threading.Thread(target=self.private_collectLineup, args=(home_team, box.find('ul', class_='lineup__list is-home')))
+            away_thread.start()
+            home_thread.start()
+            away_thread.join()
+            home_thread.join()
+            
             
 
 
-    def printTeamDataToCSV(self) :
+    def printBatterDataToCSV(self) :
         c = ','
         # We write scraped data to playerData.csv file
         orig_out = sys.stdout
-        fout = open('teamData.csv', 'w')
+        fout = open('batterData.csv', 'w')
         sys.stdout = fout
 
         print('playerName,team,gamesPlayed,plateApp,atBats,hits,homeRuns')
