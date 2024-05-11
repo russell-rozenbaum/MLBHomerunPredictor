@@ -70,8 +70,6 @@ class Data :
        
         player_batting = soup.find('div', {'id' : 'all_players_standard_batting'})
 
-        table = player_batting.find('table')
-
         player_name = player_batting.find_all('td', {'data-stat': 'player'})
         player_team = player_batting.find_all('td', {'data-stat': 'team_ID'})
         player_gp = player_batting.find_all('td', {'data-stat': 'G'})
@@ -97,7 +95,7 @@ class Data :
             }
             if name != 'LgAvg per 600 PA' :
                 if team not in self.teamData :
-                    self.teamData[team] = {'batterData': {}, 'pitcherData': {}, 'pitcher': str, 'startingLineup': []}
+                    self.teamData[team] = {'batterData': {}, 'pitcherData': {}, 'startingPitcher': str, 'startingLineup': []}
                 self.teamData[team]['batterData'][self.private_parse_name(name)] = player_info
         #self.collectStartingLineups()
 
