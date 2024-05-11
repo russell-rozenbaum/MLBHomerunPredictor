@@ -7,7 +7,6 @@ refreshSchedule = True
 
 data = collectData.Data()
 
-
 # We simultaneously collect data from the web and create data structures
 player_data_thread = threading.Thread(target=data.collectTeamData)
 schedule_data_thread = threading.Thread(target=data.collectScheduleData)
@@ -21,8 +20,6 @@ player_data_thread.join()
 data.printTeamDataToCSV()
 data.printScheduleToCSV()
 data.printStartingLineupsToCSV()
-
-
 
 
 

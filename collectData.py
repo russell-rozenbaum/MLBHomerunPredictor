@@ -46,7 +46,21 @@ class Data :
                 return 'KCR'
             case _ :
                 return team
+    
 
+    def private_parse_name(self, name) :
+        # Some people have jr. as postfixes 
+        name = name.replace('Jr.', '')
+        # There's one guy with a middle initial? So I handle that here
+        name = name.replace(' A.', '')
+        if name.count('.') == 1 :
+            return name
+        else :
+            name_first_last = name.split()
+            first = name_first_last[0]
+            last = name_first_last[1]
+            return first[0] + '. ' + last
+        
 
     def collectTeamData(self) :
 
@@ -83,7 +97,7 @@ class Data :
             if name != 'LgAvg per 600 PA' :
                 if team not in self.teamData :
                     self.teamData[team] = {'batterData': {}, 'pitcherData': {}, 'pitcher': str, 'startingLineup': []}
-                self.teamData[team]['batterData'][name] = player_info
+                self.teamData[team]['batterData'][self.private_parse_name(name)] = player_info
         self.collectStartingLineups()
 
 
@@ -121,12 +135,13 @@ class Data :
             away_lineup = away_lineup.find_all('li', class_='lineup__player')
             for chunk in away_lineup :
                 away_lineup_player = chunk.find('a').text.strip().replace('*','').replace('#','')
-                self.teamData[away_team]['startingLineup'].append(away_lineup_player)
+                self.teamData[away_team]['startingLineup'].append(self.private_parse_name(away_lineup_player))
             home_lineup = box.find('ul', class_='lineup__list is-home')
             home_lineup = home_lineup.find_all('li', class_='lineup__player')
             for chunk in home_lineup :
                 home_lineup_player = chunk.find('a').text.strip().replace('*','').replace('#','')
-                self.teamData[home_team]['startingLineup'].append(home_lineup_player)
+                self.teamData[home_team]['startingLineup'].append(self.private_parse_name(home_lineup_player))
+                
             
 
 
