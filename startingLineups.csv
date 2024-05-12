@@ -1,32 +1,31 @@
 team,1st,2nd,3rd,4th,5th,6th,7th,8th,9th
-HOU,J. Altuve,K. Tucker,Y. Alvarez,J. Pena,J. Singleton,A. Bregman,Y. Diaz,V. Caratini,J. Meyers
-DET,A. Ibanez,M. Vierling,M. Canha,R. Greene,S. Torkelson,W. Perez,R. Vilade,J. Baez,J. Rogers
-CHC,N. Hoerner,M. Tauchman,C. Bellinger,C. Morel,I. Happ,M. Busch,N. Madrigal,M. Amaya,P. Crow-Armstrong
-PIT,A. McCutchen,B. Reynolds,O. Cruz,R. Tellez,N. Gonzales,J. Suwinski,J. Triolo,Y. Grandal,M. Taylor
-NYY,A. Volpe,J. Soto,A. Judge,A. Verdugo,G. Stanton,A. Rizzo,G. Torres,J. Trevino,J. Berti
-TBR,Y. Diaz,R. Arozarena,J. Lowe,I. Paredes,H. Ramirez,J. DeLuca,R. Palacios,J. Caballero,A. Jackson
-ARI,K. Marte,C. Carroll,L. Gurriel,C. Walker,R. Grichuk,E. Suarez,G. Moreno,B. Alexander,K. Newman
-BAL,G. Henderson,A. Rutschman,R. O'Hearn,R. Mountcastle,A. Santander,C. Cowser,J. Westburg,C. Mullins,J. Mateo
-MIN,R. Jeffers,C. Correa,W. Castro,J. Miranda,M. Margot,C. Santana,K. Farmer,C. Vazquez,A. Martin
-WSN,J. Young,C. Abrams,L. Garcia,J. Meneses,J. Winker,K. Ruiz,E. Rosario,T. Lipscomb,V. Robles
-BOS,J. Duran,R. Refsnyder,T. O'Neill,R. Devers,C. Wong,V. Grissom,G. Cooper,R. Gonzalez,C. Rafaela
-ATL,R. Acuna,O. Albies,A. Riley,M. Olson,M. Ozuna,A. Duvall,M. Harris,T. d'Arnaud,O. Arcia
-MIL,B. Turang,W. Contreras,C. Yelich,W. Adames,R. Hoskins,S. Frelick,B. Perkins,J. Bauers,J. Ortiz
-LAA,N. Schanuel,M. Moniak,T. Ward,W. Calhoun,N. Goodrum,M. Thaiss,J. Adell,Z. Neto,L. Guillorme
-SFG,A. Slater,T. Estrada,L. Wade,W. Flores,M. Chapman,H. Ramos,C. Schmitt,T. Fitzgerald,J. Reetz
-OAK,A. Toro,J. Bleday,B. Rooker,S. Brown,S. Langeliers,T. Soderstrom,M. Schuemann,L. Butler,B. Harris
-NYM,B. Nimmo,S. Marte,F. Lindor,P. Alonso,J. Martinez,J. McNeil,H. Bader,B. Baty,T. Nido
-MIA,D. Myers,B. De La Cruz,J. Bell,J. Burger,J. Chisholm,T. Anderson,E. Rivera,C. Bethancourt,V. Brujan
-STL,J. Fermin,L. Nootbaar,P. Goldschmidt,N. Arenado,I. Herrera,A. Burleson,D. Carlson,M. Winn,M. Siani
-CLE,B. Rocchio,D. Fry,J. Ramirez,J. Naylor,R. Laureano,T. Freeman,W. Brennan,G. Arias,A. Hedges
-TOT,,,,,,,,,
-SDP,L. Arraez,F. Tatis,J. Cronenworth,M. Machado,J. Profar,X. Bogaerts,J. Merrill,L. Campusano,H. Kim
-TOR,D. Schneider,D. Varsho,V. Guerrero,J. Turner,D. Jansen,B. Bichette,C. Biggio,I. Kiner-Falefa,E. Clement
 LAD,M. Betts,S. Ohtani,F. Freeman,W. Smith,M. Muncy,T. Hernandez,A. Pages,G. Lux,J. Outman
-COL,C. Blackmon,E. Tovar,R. McMahon,E. Diaz,S. Bouchard,B. Rodgers,B. Doyle,J. Cave,E. Montero
-CHW,T. Pham,G. Sheets,A. Vaughn,E. Jimenez,A. Benintendi,B. Ramos,K. Lee,P. DeJong,N. Lopez
+SDP,L. Arraez,F. Tatis,J. Profar,M. Machado,X. Bogaerts,D. Solano,H. Kim,J. Azocar,K. Higashioka
+KCR,M. Garcia,B. Witt,V. Pasquantino,S. Perez,N. Velazquez,M. Melendez,H. Renfroe,G. Hampson,K. Isbel
+LAA,N. Schanuel,C. Tucker,T. Ward,K. Pillar,L. O'Hoppe,N. Goodrum,J. Adell,Z. Neto,K. Paris
+OAK,A. Toro,T. Nevin,J. Bleday,B. Rooker,T. Soderstrom,K. McCann,M. Schuemann,L. Butler,B. Harris
+SEA,J. Rojas,J. Rodriguez,M. Haniger,C. Raleigh,M. Garver,J. Polanco,T. France,L. Raley,D. Moore
+MIN,E. Julien,T. Larnach,R. Jeffers,M. Kepler,C. Correa,A. Kirilloff,W. Castro,C. Santana,J. Miranda
+TOR,D. Schneider,D. Varsho,V. Guerrero,J. Turner,D. Jansen,B. Bichette,I. Kiner-Falefa,C. Biggio,E. Clement
+ARI,K. Marte,C. Carroll,L. Gurriel,C. Walker,R. Grichuk,E. Suarez,G. Moreno,B. Alexander,K. Newman
+BAL,G. Henderson,A. Rutschman,R. O'Hearn,R. Mountcastle,A. Santander,C. Cowser,J. Westburg,H. Kjerstad,J. Mateo
+ATL,R. Acuna,O. Albies,A. Riley,M. Olson,M. Ozuna,T. d'Arnaud,M. Harris,O. Arcia,J. Kelenic
+NYM,B. Nimmo,S. Marte,F. Lindor,P. Alonso,J. Martinez,J. McNeil,H. Bader,B. Baty,T. Nido
+PHI,W. Merrifield,J. Realmuto,B. Harper,A. Bohm,N. Castellanos,B. Stott,E. Sosa,C. Pache,J. Rojas
+MIA,J. Chisholm,B. De La Cruz,J. Burger,J. Bell,J. Sanchez,N. Gordon,V. Brujan,O. Lopez,N. Fortes
+NYY,A. Volpe,J. Soto,A. Judge,A. Verdugo,J. Berti,A. Rizzo,A. Wells,O. Cabrera,T. Grisham
+TBR,Y. Diaz,R. Arozarena,A. Rosario,I. Paredes,H. Ramirez,J. DeLuca,J. Caballero,A. Jackson,J. Siri
+HOU,J. Altuve,J. Pena,Y. Alvarez,A. Bregman,J. Singleton,Y. Diaz,J. Meyers,M. Dubon,J. Loperfido
+DET,R. Greene,M. Canha,W. Perez,K. Carpenter,M. Vierling,C. Keith,S. Torkelson,Z. McKinstry,J. Rogers
+CLE,E. Florial,A. Gimenez,J. Ramirez,J. Naylor,W. Brennan,R. Laureano,B. Naylor,K. Manzardo,G. Arias
+CHW,T. Pham,G. Sheets,A. Vaughn,E. Jimenez,A. Benintendi,B. Ramos,P. DeJong,N. Lopez,M. Maldonado
+STL,B. Donovan,L. Nootbaar,P. Goldschmidt,N. Arenado,A. Burleson,I. Herrera,M. Carpenter,N. Gorman,M. Winn
+MIL,B. Turang,W. Contreras,W. Adames,J. Bauers,R. Hoskins,S. Frelick,G. Sanchez,O. Dunn,B. Perkins
 CIN,T. Friedl,E. De La Cruz,M. Ford,S. Steer,J. Fraley,T. Stephenson,J. Candelario,W. Benson,J. India
-KCR,M. Garcia,B. Witt,V. Pasquantino,S. Perez,M. Massey,M. Melendez,A. Frazier,D. Blanco,K. Isbel
-PHI,K. Schwarber,J. Realmuto,B. Harper,A. Bohm,N. Castellanos,W. Merrifield,E. Sosa,C. Pache,J. Rojas
-SEA,J. Rojas,J. Rodriguez,M. Haniger,C. Raleigh,M. Garver,L. Raley,T. France,D. Moore,L. Urias
-TEX,M. Semien,C. Seager,N. Lowe,A. Garcia,J. Heim,R. Grossman,E. Duran,D. Wendzel,L. Taveras
+SFG,T. Estrada,L. Wade,P. Bailey,W. Flores,H. Ramos,M. Chapman,M. Conforto,C. Schmitt,T. Fitzgerald
+TEX,M. Semien,C. Seager,N. Lowe,A. Garcia,J. Smith,J. Heim,T. Jankowski,E. Duran,L. Taveras
+COL,E. Tovar,B. Rodgers,R. McMahon,E. Diaz,S. Bouchard,B. Doyle,J. Stallings,H. Goodman,J. Beck
+CHC,M. Tauchman,S. Suzuki,C. Bellinger,C. Morel,I. Happ,N. Hoerner,M. Busch,M. Mastrobuoni,Y. Gomes
+PIT,A. McCutchen,B. Reynolds,C. Joe,O. Cruz,E. Olivares,N. Gonzales,Y. Grandal,J. Triolo,M. Taylor
+WSN,J. Young,C. Abrams,L. Garcia,J. Meneses,J. Winker,K. Ruiz,E. Rosario,T. Lipscomb,V. Robles
+BOS,J. Duran,W. Abreu,T. O'Neill,R. Devers,V. Grissom,D. Smith,R. McGuire,D. Hamilton,C. Rafaela

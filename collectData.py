@@ -1,5 +1,4 @@
 import sys
-import requests
 import selenium
 from bs4 import BeautifulSoup 
 from selenium import webdriver
@@ -50,16 +49,24 @@ class Data :
     
 
     def private_parse_name(self, name) :
-        # Some people have jr. as postfixes 
+        # Some people have jr. or accents as postfixes 
         name = name.replace('Jr.', '')
-        # There's one guy with a middle initial? So I handle that here
-        name = name.replace(' A.', '')
+        name = name.replace('ñ', 'n')
+        name = name.replace('í', 'i')
+        name = name.replace('á', 'a')
+        name = name.replace('ó', 'o')
+        name = name.replace('é', 'e')
+        name = name.replace('II', '')
+        # There's one guy with a middle initial
+        # As of right now, I (very ugliely) handle it here
+        if name == 'Michael A. Taylor' :
+            return 'M. Taylor'
         if name.count('.') == 1 :
             return name
         else :
             name_first_last = name.split()
             first = name_first_last[0]
-            last = name_first_last[1]
+            last = ' '.join(name_first_last[1:])
             return first[0] + '. ' + last
         
 
@@ -93,7 +100,7 @@ class Data :
             'hits' : int(player_hits[i].text.strip()),
             'hr' : int(player_hr[i].text.strip())
             }
-            if name != 'LgAvg per 600 PA' :
+            if (name != 'LgAvg per 600 PA') & (team != 'TOT') :
                 if team not in self.teamData :
                     self.teamData[team] = {'batterData': {}, 'pitcherData': {}, 'startingPitcher': str, 'startingLineup': []}
                 self.teamData[team]['batterData'][self.private_parse_name(name)] = player_info
@@ -133,7 +140,8 @@ class Data :
         # This line actually fails to grab a lineup if the game has started
         boxes_unstarted_games = soup.find_all('div', class_='lineup is-mlb')
         boxes_started_games = soup.find_all('div', class_='lineup is-mlb has-started')
-        boxes = boxes_unstarted_games + boxes_started_games
+        boxes_delayed_games = soup.find_all('div', class_='lineup is-mlb has-started not-in-slate')
+        boxes = boxes_unstarted_games + boxes_started_games + boxes_delayed_games
         for box in boxes :
             away_team = box.find('div', class_='lineup__team is-visit')
             away_team = away_team.find('div', class_='lineup__abbr').text.strip()         
